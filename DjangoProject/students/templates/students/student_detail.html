@@ -22,20 +22,22 @@
           </tr>
         </thead>
         <tbody>
+          {% for items in data %}</h1>
+          {% if items.student_record.id == student.id %}
           <tr>
-            <th scope="row">1/14/2023</th>
-            <td>HEADACHE</td>
-            <td>PARACETAMOL</td>
-            <td>GO HOME AND TAKE A REST</td>
+            <th scope="row">{{items.date_and_time_of_visit}}</th>
+            <td>{{items.chief_complaints}}</td>
+            <td>{{items.treatments}}</td>
+            <td>{{items.remarks}}</td>
           </tr>
-          <tr>
-            <th scope="row">1/14/2023</th>
-            <td>STOMACH ACHE</td>
-            <td>OINTMENT</td>
-            <td>NA</td>
-          </tr>
+          {% else %}
+          {% endif %}
+          {% endfor %}
+     
         </tbody>
       </table>
+    
+   
     <div class="text-center">
     <a id="back" class="btn btn-sm btn-info" onclick="yousure()">BACK TO HOMEPAGE</a>
     <script>

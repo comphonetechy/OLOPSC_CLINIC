@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest, HttpResponseRedirect, Http404
 from django.urls import reverse
-from .models import Student, DailyClinicRecords
+from .models import Student, DailyClinicRecords, StudentClinicRecords
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -48,7 +48,9 @@ def processadd(request):
         return HttpResponseRedirect('/')
 
 def processaddvisitor(request):
-    datetime = request.POST.get('dateandtime')
+    date = request.POST.get('date')
+    time = request.POST.get('time')
+    date_time = str(date) + " " + str(time)
     studname = request.POST.get('s_name')
     studnum = request.POST.get('s_number')
     year = request.POST.get('year_level')
@@ -56,16 +58,17 @@ def processaddvisitor(request):
     yearcourse = year + " " + course
     if studname == "":
          return render(request, 'students/add_visitor.html', {'error_message' :'error details'})
-    record = DailyClinicRecords.objects.create(date_and_time_of_visit=datetime, student_name=studname, student_number=studnum, year_level_and_course=yearcourse)
+    record = DailyClinicRecords.objects.create(date_and_time_of_visit=date_time, student_name=studname, student_number=studnum, year_level_and_course=yearcourse)
     record.save()
     return HttpResponseRedirect('/')
 
 def detail(request, student_id):
+    student_clinic_record = StudentClinicRecords.objects.all()
     try:
         student = Student.objects.get(pk=student_id)
     except Student.DoesNotExist:
         raise Http404("profile does not exist")
-    return render(request, "students/student_detail.html", {'student':student})
+    return render(request, "students/student_detail.html", {'student':student, 'data':student_clinic_record,})
 
 
 def delete(request, student_id):

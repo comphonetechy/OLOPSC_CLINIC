@@ -6,12 +6,12 @@
 
 {% block content %}
 <div class="heading ps-5">
-    <h3>REGISTERED STUDENTS  <a href="add" class="btn btn-success">Add to record</a> <a href="dailyclinicrecords" class="btn btn-primary">Daily Clinic Records</a></h3>
-    
+    <h3>REGISTERED STUDENTS  <a href="add" class="btn btn-success">Add to record</a> <a href="dailyclinicrecords" class="btn btn-primary">Daily Clinic Records</a> <a class="btn p-5" href="{% url 'admin:index' %}"> Admin site </a></h3>
+    <button class="btn btn-info" onclick="toggle('hide')">Toggle Hide/Show</button>
 </div>
 <div class="p-5">
-    <div>
-        <table class="table table-bordered">
+    <div id="hide" style="display: none;">
+        <table class="table table-bordered" >
             <thead>
                 <tr>
                     <th>STUDENT NAME</th>
@@ -31,6 +31,14 @@
         </table>
     </div>
 </div>
-
-
+<script>
+    function toggle(ID){
+        var element = document.getElementById(ID);
+        if(element.style.display === "none"){
+            element.style.display = "block";
+        }else{
+            element.style.display = "none";
+        }
+    }
+    </script>
 {% endblock %}
