@@ -53,7 +53,7 @@ def processaddvisitor(request):
     studnum = request.POST.get('s_number')
     yearcourse = request.POST.get('yearlevelandcourse')
     if studname == "":
-         return render(request, 'students/add.html', {'error_message' :'empty details'})
+         return render(request, 'students/add_visitor.html', {'error_message' :'error details'})
     record = DailyClinicRecords.objects.create(date_and_time_of_visit=datetime, student_name=studname, student_number=studnum, year_level_and_course=yearcourse)
     record.save()
     return HttpResponseRedirect('/')
