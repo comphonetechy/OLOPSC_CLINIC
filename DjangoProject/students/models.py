@@ -6,15 +6,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=30)
     student_number = models.IntegerField(max_length=30)
     guardian_name = models.CharField(max_length=30)
-    guardian_contact = models.CharField(max_length=30)
-    
-    YEAR_IN_SCHOOL_CHOICES = [
-    ('FR', 'Freshman'),
-    ('SO', 'Sophomore'),
-    ('JR', 'Junior'),
-    ('SR', 'Senior'),
-    ('GR', 'Graduate'),
-]
+    guardian_contact = models.CharField(max_length=30)  
 
 def __str__(self):
     return self.first_name

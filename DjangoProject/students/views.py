@@ -51,7 +51,9 @@ def processaddvisitor(request):
     datetime = request.POST.get('dateandtime')
     studname = request.POST.get('s_name')
     studnum = request.POST.get('s_number')
-    yearcourse = request.POST.get('yearlevelandcourse')
+    year = request.POST.get('year_level')
+    course = request.POST.get('course')
+    yearcourse = year + " " + course
     if studname == "":
          return render(request, 'students/add_visitor.html', {'error_message' :'error details'})
     record = DailyClinicRecords.objects.create(date_and_time_of_visit=datetime, student_name=studname, student_number=studnum, year_level_and_course=yearcourse)

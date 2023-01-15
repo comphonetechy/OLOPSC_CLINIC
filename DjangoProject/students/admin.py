@@ -10,5 +10,8 @@ admin.site.index_title = "Welcome to OLOPSC CLINIC!"
 class StudentInfo(admin.ModelAdmin):
     list_display = ['first_name','last_name','student_number','guardian_name','guardian_contact']
 
+class ClinicVisitors(admin.ModelAdmin):
+    list_display = ['date_and_time_of_visit','student_name','student_number','year_level_and_course']
+
 admin.site.register(Student, StudentInfo)
-admin.site.register(DailyClinicRecords)
+admin.site.register(DailyClinicRecords, ClinicVisitors)
