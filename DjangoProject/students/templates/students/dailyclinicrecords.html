@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    Daily Clinic Record
+{% endblock%}
+
+{% block content %}
+<h1 class="ms-4">Patient Visit Logs <a href="addvisitor" class="btn btn-success">Add Visitor</a></h1>
+<div class="p-5">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">DATE AND TIME OF VISIT</th>
+            <th scope="col">STUDENT NAME</th>
+            <th scope="col">STUDENT NUMBER</th>
+            <th scope="col">YEAR LEVEL AND COURSE</th>
+          </tr>
+        </thead>
+        <tbody>
+{% for data in record %}
+          <tr>
+            <th scope="row">{{ data.date_and_time_of_visit }}</th>
+            <td>{{ data.student_name }}</td>
+            <td>{{ data.student_number }}</td>
+            <td>{{ data.year_level_and_course }}</td>
+          </tr>
+{% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock %}

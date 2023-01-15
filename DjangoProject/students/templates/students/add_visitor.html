@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    Add to record
+{% endblock%}
+
+
+{% block content %}
+    <div class="w-50 m-5">
+      <form action="{% url 'students:processaddvisitor' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+          <label for="">Date and Time</label>
+          <input type="datetime-local" name="dateandtime" id="dateandtime" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="">Student Name</label>
+          <input type="text" name="s_name" id="s_name" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="">Student Number</label>
+          <input type="number" name="s_number" id="s_number" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="">Year level and course</label>
+          <input type="text" name="yearlevelandcourse" id="yearlevelandcourse" class="form-control">
+          <button type="submit" class="btn btn-success mt-2 text-center">Add Visitor</button>
+      </div>
+    </form>
+    <br>
+  <div class="mw-25 alert alert-danger text-center" role="alert">
+      <p>{{ error_message }} Please Try Again...</p>
+  </div>
+
+</div>
+
+
+
+{% endblock%}
