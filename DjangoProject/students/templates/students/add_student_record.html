@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    Add to record
+{% endblock%}
+
+
+{% block content %}
+  <style>
+
+    
+  </style>
+    <div class="form-group p-5">
+      <h1>Add Student Record Form</h1>
+      <form action="" method="post" enctype="multipart/form-data" class="form-group">
+      {% csrf_token %}
+        
+       {% for items in form %}
+       <br>
+       {{items.name}}
+       <br>
+       {{items}}
+       <br>
+       {% endfor %}
+      <br>
+      <button type="submit" onclick="added()" class="btn btn-success mt-2 text-center">Add to {{ student.first_name}} record</button>
+      </div>
+    </form>
+    <br>
+    <a id="back" class="btn btn-sm btn-info ms-5" href="{% url 'students:homepage' %}">BACK TO HOMEPAGE</a>
+    <hr>  
+  <div class="mw-25 alert alert-danger text-center" role="alert">
+      <p>{{ error_message }} Please Try Again...</p>
+  </div>
+</div>
+<script>
+    function added () {
+      alert("Please don't click or else it will be duplicated")
+    }
+</script>
+
+
+{% endblock%}

@@ -8,8 +8,8 @@ admin.site.site_title = "OLOPSC CLINIC"
 admin.site.index_title = "Welcome to OLOPSC CLINIC!"
 
 class StudentInfo(admin.ModelAdmin):
-    search_fields = ('first_name','last_name','student_number','guardian_name','guardian_contact')
-    list_display = ['first_name','last_name','student_number','guardian_name','guardian_contact']
+    search_fields = ('user_created','first_name','last_name','student_number','guardian_name','guardian_contact')
+    list_display = ['user_created','first_name','last_name','student_number','guardian_name','guardian_contact']
 
 class ClinicVisitors(admin.ModelAdmin):
     search_fields = ('date_and_time_of_visit','student_name','student_number','year_level_and_course')

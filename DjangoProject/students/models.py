@@ -6,7 +6,8 @@ class Student(models.Model):
     last_name = models.CharField(max_length=30,verbose_name="Last name")
     student_number = models.IntegerField(max_length=30)
     guardian_name = models.CharField(max_length=30)
-    guardian_contact = models.CharField(max_length=30)  
+    guardian_contact = models.CharField(max_length=30)
+    user_created = models.CharField(max_length=30, default="2023")  
 
     def __str__(self):
         return self.first_name + " " + self.last_name

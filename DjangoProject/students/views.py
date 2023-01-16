@@ -5,7 +5,7 @@ from .models import Student, DailyClinicRecords, StudentClinicRecords
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.db.models import Q
-
+from .forms import StudentClinicRecordsForm
 # Create your views here.
 
 def homepage(request):
@@ -28,6 +28,19 @@ def search(request):
 def add(request):
     return render(request, "students/add.html")
 
+def addstudentrecord(request, data_id):
+  # create object of form
+    form = StudentClinicRecordsForm(request.POST or None, request.FILES or None)
+     
+    # check if form data is valid
+    if form.is_valid():
+        # save the form data to model
+        form.save()
+ 
+    context = { 'form':form}
+    return render(request, "students/add_student_record.html", context)
+
+
 def addvisitor(request):
     return render(request, "students/add_visitor.html")
 
@@ -37,13 +50,16 @@ def processadd(request):
     s_number = request.POST.get('student_number')
     g_name = request.POST.get('guardian_name')
     g_contact = request.POST.get('guardian_contact')
+    date = request.POST.get('date')
+    time = request.POST.get('time')
+    user_created = str(date) + " " + str(time)
     if f_name == "":
          return render(request, 'students/add.html', {'error_message' :'empty details'})
     try:
         n = Student.objects.get(first_name=f_name)
         return render(request, 'students/add.html', {'error_message' :'dubplicated info'})
     except ObjectDoesNotExist:
-        student = Student.objects.create(first_name=f_name, last_name=l_name, student_number=s_number, guardian_name=g_name, guardian_contact=g_contact)
+        student = Student.objects.create(user_created=user_created,first_name=f_name, last_name=l_name, student_number=s_number, guardian_name=g_name, guardian_contact=g_contact)
         student.save()
         return HttpResponseRedirect('/')
 

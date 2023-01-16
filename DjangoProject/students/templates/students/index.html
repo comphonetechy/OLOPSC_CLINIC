@@ -6,11 +6,11 @@
 
 {% block content %}
 <div class="heading ps-5">
-    <h3>REGISTERED STUDENTS  <a href="add" class="btn btn-success">Add to record</a> <a href="dailyclinicrecords" class="btn btn-primary">Daily Clinic Records</a> <a class="btn p-5" href="{% url 'admin:index' %}"> Admin site </a></h3>
-    <button class="btn btn-info" onclick="toggle('hide')">Toggle Hide/Show</button>
+    <h3>REGISTERED STUDENTS  <a href="add" class="btn btn-success">Add to record</a> <a href="dailyclinicrecords" class="btn btn-primary">Daily Clinic Records</a> <button class="btn btn-info" onclick="toggle('hide')">Toggle Hide/Show</button> <a class="btn btn-info" href="{% url 'admin:index' %}"> Admin site </a></h3>
+
 </div>
 <div class="p-5">
-    <div id="hide" style="display: none;">
+    <div id="hide" style="display:;">
         <table class="table table-bordered" >
             <thead>
                 <tr>

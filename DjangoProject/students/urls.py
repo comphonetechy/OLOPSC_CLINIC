@@ -14,5 +14,6 @@ urlpatterns = [
     path('search', views.search, name='search'),
     path('processadd', views.processadd, name='processadd'),
     path('<int:student_id>/detail/', views.detail, name='detail'),
+    path('detail/<int:data_id>', views.addstudentrecord, name='addstudentrecord'),
     path('<int:student_id>/delete/', views.delete, name='delete')
 ]
