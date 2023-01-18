@@ -7,10 +7,38 @@ class Student(models.Model):
     student_number = models.IntegerField(max_length=30)
     guardian_name = models.CharField(max_length=30)
     guardian_contact = models.CharField(max_length=30)
-    user_created = models.CharField(max_length=30, default="2023")  
-
+    user_created = models.CharField(max_length=30, default="2023")
+    #BACKGROUND HEALTH
     def __str__(self):
         return self.first_name + " " + self.last_name
+""" chickenpox
+    dengue
+    diphtheria
+    germanmeasles
+    hepatitis
+    measles
+    mumps
+    primarycomplex
+    typhoidfever
+    whoopingcough
+    asthma
+    diabetes
+    eardisorder
+    epilepsy
+    eyedisorder
+    hearthdisease
+    kidneydisease
+    tuberculosis
+    g6pd
+    othersspecify
+    #PERMISSION GRANTED FOR (PLEASE CHECK)
+    treatment_of_sudden_illness_or_injuries
+    giving_initial_medication
+    take_to_hospital_if_emergency"""
+
+
+
+
 
 class DailyClinicRecords(models.Model):
     date_and_time_of_visit = models.CharField(max_length=30)

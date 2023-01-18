@@ -5,7 +5,7 @@
 {% endblock%}
 
 {% block content %}
-<h1 class="ms-4">Patient Visit Logs <a href="addvisitor" class="btn btn-success">Add Visitor</a></h1>
+<!--OLD <h1 class="ms-4">Patient Visit Logs <a href="addvisitor" class="btn btn-success">Add Visitor</a></h1>
 <div class="p-5">
     <table class="table">
         <thead class="thead-dark">
@@ -28,5 +28,33 @@
         </tbody>
       </table>
 </div>
+-->
 
+<h1 class="ms-4">Patient Visit Logs <a href="addvisitor" class="btn btn-success" style="display: none;">Add Visitor</a></h1>
+<div class="p-5">
+  <div id="current_date"></div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">DATE</th>
+        <th scope="col">NAME</th>
+        <th scope="col">CHIEF COMPLAINTS</th>
+        <th scope="col">REMARKS</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for items in record %}</h1>
+      <tr>
+        <th scope="row">{{items.date_and_time_of_visit}}</th>
+        <td>{{items.student_record}}</td>
+        <td>{{items.chief_complaints}}</td>
+        <td>{{items.remarks}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+  <script>
+  document.getElementById("current_date").innerHTML = Date();
+  </script>
 {% endblock %}

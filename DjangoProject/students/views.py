@@ -18,7 +18,7 @@ def homepage(request):
 
 def search(request):
     entry = request.GET.get('search','')
-    data = Student.objects.filter(Q (student_number__icontains=entry)).order_by('-id')
+    data = Student.objects.filter(Q (student_number__icontains=entry)).order_by('-id') or Student.objects.filter(Q (last_name__icontains=entry)).order_by('-id')
     
     context = {
         'student': data
@@ -31,13 +31,14 @@ def add(request):
 def addstudentrecord(request, data_id):
   # create object of form
     form = StudentClinicRecordsForm(request.POST or None, request.FILES or None)
+    student = Student.objects.all()
      
     # check if form data is valid
     if form.is_valid():
         # save the form data to model
         form.save()
  
-    context = { 'form':form}
+    context = { 'form':form, 'dataid':data_id, 'student':student}
     return render(request, "students/add_student_record.html", context)
 
 
@@ -122,7 +123,7 @@ def processedit(request, student_id):
         return HttpResponseRedirect(reverse('students:detail', args=(student_id,)))
 
 def dailyclinicrecords(request):
-    data = DailyClinicRecords.objects.all().order_by('-id')
+    data = StudentClinicRecords.objects.all().order_by('-id')
     context = {
         'record': data
     }
