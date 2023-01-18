@@ -11,6 +11,8 @@ class Student(models.Model):
     #BACKGROUND HEALTH
     def __str__(self):
         return self.first_name + " " + self.last_name
+
+# UNDER THE STUDENT BACKGROUND HEALTH CHECK
 """ chickenpox
     dengue
     diphtheria
@@ -34,7 +36,8 @@ class Student(models.Model):
     #PERMISSION GRANTED FOR (PLEASE CHECK)
     treatment_of_sudden_illness_or_injuries
     giving_initial_medication
-    take_to_hospital_if_emergency"""
+    take_to_hospital_if_emergency
+"""
 
 
 

@@ -9,25 +9,118 @@
     <h1>{{ student.first_name }} {{ student.last_name}}</h1>
     <p>Student no. {{ student.student_number }}</p>
     <p>Date of Birth.</p>
+    <p>Student Contact.</p>
     <p>Guardian. {{ student.guardian_name }}</p>
     <p>Guardian Contact. {{ student.guardian_contact}}</p>
-    <p>Address.</p>
-    <hr>
+    <p>Address.</p> 
+    <br>
     <h2>STUDENT BACKGROUND HEALTH HISTORY</h2>
     <hr>
-    <table class="table table-hover">
-      <thead>
+    <div class="table">
+      <table>
         <tr>
-          <th scope="col">ILNESS</th>
-          <th scope="col">CONDITION</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td></td>
-          <th scope="row"></th>
+          <td>
+            <table class="table table-hover" cellpadding="15">
+              <tr>
+                <th scope="row">ILLNESS</th>
+                <th scope="row">CONDITION</th>
+              </tr>
+              <tr>
+                <td>chickenpox</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>dengue</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>diphtheria</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>germanmeasles</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>hepatitis</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>measles</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>mumps</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>primarycomplex</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>typhoidfever</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>whoopingcough</td>
+                <td>Null</td>
+              </tr>
+              
+            </table>
+          </td>
+          <br>
+          <td>
+            <table class="table table-hover" cellpadding="15">
+              <tr>
+                <th scope="row">ILLNESS</th>
+                <th scope="row">CONDITION</th>
+              </tr>
+              <tr>
+                <td>asthma</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>diabetes</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>eardisorder</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>epilepsy</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>eyedisorder</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>hearthdisease</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>kidneydisease</td>
+                <td>Null</td>
+              </tr> 
+              <tr>
+                <td>tuberculosis</td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>g6pd  </td>
+                <td>Null</td>
+              </tr>
+              <tr>
+                <td>othersspecify</td>
+                <td>Null</td>
+              </tr>
+            </table>
+          </td>
+          </td>
         </tr>
       </table>
+    </div>
     <h2>STUDENT CLINIC RECORD</h2>
     <table class="table table-hover">
         <thead>
@@ -54,7 +147,9 @@
         </tbody>
       </table>
       <a href="{% url 'students:addstudentrecord' student.id %}" class="btn btn-primary">Add Record</a>
-   
+      <hr>
+      <h2>PERMISSION STUDENT FOR:</h2>
+      <hr>
     <div class="text-center">
     <a id="back" class="btn btn-sm btn-info" onclick="yousure()">BACK TO HOMEPAGE</a>
     <script>
@@ -69,7 +164,6 @@
         }
     }
     </script>
-    
 </div>
 
 {% endblock %}
