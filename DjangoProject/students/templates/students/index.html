@@ -5,32 +5,49 @@
 {% endblock%}
 
 {% block content %}
-<div class="heading ps-5">
-    <h3>REGISTERED STUDENTS  <a href="add" class="btn btn-success">Add to record</a> <a href="dailyclinicrecords" class="btn btn-primary">Daily Clinic Records</a> <button class="btn btn-info" onclick="toggle('hide')">Toggle Hide/Show</button> <a class="btn btn-info" href="{% url 'admin:index' %}"> Admin site </a></h3>
 
-</div>
-<div class="p-5">
-    <div id="hide" style="display:;">
-        <table class="table table-bordered" >
-            <thead>
-                <tr>
-                    <th>STUDENT NAME</th>
-                    <th>STUDENT NUMBER</th>
-                    <th>ACTION</th>
-                </tr>
-            </thead>
-{% for data in student %}
-            <tr>
-                <td>{{ data.first_name }} {{data.last_name}} -- ID:({{ data.id }}) -- CREATED ON: ({{data.user_created}}) </td>
-                <td>{{ data.student_number }}</td>
-                <td><a class="btn btn-sm btn-success" href="{% url 'students:detail' data.id %}">ENTER</a>
-                    <a  onclick="return confirm('Are you sure you want to delete this?')"  class="btn btn-sm btn-danger"href="{% url 'students:delete' data.id %}">DELETE</a> 
-                    <a class="btn btn-sm btn-info"href="{% url 'students:edit' data.id %}">EDIT</a></td>
-            </tr>
-{% endfor %}
-        </table>
-    </div>
-</div>
+
+<div class="container">
+    <table class="table">
+    <tr>
+        <td class="bg-warning p-3 rounded">
+         <a class="text-dark" onclick="toggle('hide')" style="text-decoration: none;"><h4>    
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+          </svg> Toggle Visibility <a href="add" class="text-dark" style="text-decoration: none; float: right;"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+          </svg> Add Student</a></h4></a>
+        </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="table-light">
+            <div id="hide" style="display:;">
+                <table class="table table-hover" >
+                    <thead>
+                        <tr>
+                            <th>STUDENT NAME</th>
+                            <th>STUDENT NUMBER</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+        {% for data in student %}
+                    <tr>
+                        <td>{{ data.first_name }} {{data.last_name}} -- ID:({{ data.id }}) -- CREATED ON: ({{data.user_created}}) </td>
+                        <td>{{ data.student_number }}</td>
+                        <td><a class="btn btn-sm btn-success" href="{% url 'students:detail' data.id %}">ENTER</a>
+                            <a  onclick="return confirm('Are you sure you want to delete this?')"  class="btn btn-sm btn-danger"href="{% url 'students:delete' data.id %}">DELETE</a> 
+                            <a class="btn btn-sm btn-warning"href="{% url 'students:edit' data.id %}">EDIT</a></td>
+                    </tr>
+        {% endfor %}
+                </table>
+            </div>
+        </div>
+        </td>
+    </tr>
+    </table>
+    
 <script>
     function toggle(ID){
         var element = document.getElementById(ID);
